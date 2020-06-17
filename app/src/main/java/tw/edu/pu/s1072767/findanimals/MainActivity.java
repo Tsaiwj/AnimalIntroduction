@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void quit(View view) {
         AlertDialog.Builder alertdialogbuilder=new AlertDialog.Builder(this);
-        alertdialogbuilder.setMessage("確定要退出遊戲嗎？");
+        alertdialogbuilder.setMessage("確定要退出程式嗎？");
         alertdialogbuilder.setPositiveButton("確定",click1);
         alertdialogbuilder.setNegativeButton("取消",click2);
         AlertDialog alertdialog1=alertdialogbuilder.create();
