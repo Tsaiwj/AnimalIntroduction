@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     private Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (intent != null){
-            // 对于intentService，这一步可能是多余的
             stopService(intent);
         }
     }
