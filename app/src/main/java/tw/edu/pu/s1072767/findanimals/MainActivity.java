@@ -4,20 +4,28 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        intent = new Intent(MainActivity.this, bgmusic.class);
+        String action = bgmusic.ACTION_MUSIC;
+        intent.setAction(action);
+        startService(intent);
     }
 
     public void quit(View view) {
         AlertDialog.Builder alertdialogbuilder=new AlertDialog.Builder(this);
-        alertdialogbuilder.setMessage("確定要退出程序嗎？");
+        alertdialogbuilder.setMessage("確定要退出遊戲嗎？");
         alertdialogbuilder.setPositiveButton("確定",click1);
         alertdialogbuilder.setNegativeButton("取消",click2);
         AlertDialog alertdialog1=alertdialogbuilder.create();
@@ -38,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
             arg0.cancel();
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (intent != null){
+            // 对于intentService，这一步可能是多余的
+            stopService(intent);
+        }
+    }
 }
 
 
